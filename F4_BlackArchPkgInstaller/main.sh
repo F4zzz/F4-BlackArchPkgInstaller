@@ -3,7 +3,6 @@ if [[ $(id -u) != 0 ]]; then
 	exit
 fi;
 echo "###### F4 BlackArch Pkg Installer ######"
-arr=($(cat pkgs.txt))
 curl -L https://blackarch.org/strap.sh | bash
-pacman -Sy
-pacman -S ${arr[@]}
+arr=($(cat pkgs.txt))
+pacman -Sy --noconfirm --needed ${arr[@]}
